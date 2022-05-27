@@ -20,6 +20,7 @@ import { CreateTopicComponent } from './create-topic/create-topic.component';
 import { CreateTopicDialogComponent } from './create-topic-dialog/create-topic-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatInputModule} from '@angular/material/input';
     PostsComponent,
     BreadcrumbComponent,
     CreateTopicComponent,
-    CreateTopicDialogComponent
+    CreateTopicDialogComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ERROR | E_PARSE);
 /* pour tester
 require_once 'auth.php';
 

@@ -17,7 +17,8 @@ export class TopicsComponent implements OnInit {
   course : any;
   breadcrumb : BreadcrumbData[] = [];
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['subject_name', 'no_posts', 'last_message'];
+  //displayedColumns: string[] = ['subject_name', 'no_posts', 'last_message'];
+  displayedColumns: string[] = ['no_posts'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
@@ -31,7 +32,6 @@ export class TopicsComponent implements OnInit {
       this.dataSource.data = resultat.data[0];
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log("laaaaaaaaaaaaaaaaaaaa",resultat.data[0]);
       
       this.breadcrumb = [{nom: 'Tous les cours / ', route: '/cours'},
                           {nom: resultat.data[1][0].course_name, route: ''}];
@@ -41,7 +41,10 @@ export class TopicsComponent implements OnInit {
   @Input() id : any;
 
   onCreateTopic(data: any) {
+    console.log("dans le OnCreateTopic");
+    console.log(data);
     this.dataSource.data.push(data);
+    console.log(this.dataSource.data);
   }
 
   /** Announce the change in sort state for assistive technology. */

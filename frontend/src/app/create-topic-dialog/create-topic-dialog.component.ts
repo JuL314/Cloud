@@ -29,9 +29,6 @@ export class CreateTopicDialogComponent {
   newTopic(){
     let id = this.data.id_cours;
     let nom_topic = this.animal;
-
-    console.log("erreur un");
-    console.log(nom_topic);
     
     this.messageService.sendMessage("saveNewTopic",{nom:nom_topic,id_cours:id}).subscribe(resultat=>{
       if(resultat.data.reason){
@@ -39,9 +36,6 @@ export class CreateTopicDialogComponent {
         console.log(this.errorMessage);
       }
       else {
-        console.log(resultat);
-        console.log(resultat.data);
-        console.log(resultat.data[0].suject_id);
         let subject_id = resultat.data[0].suject_id;
         this.dialogRef.close({nom_topic,subject_id});
       }

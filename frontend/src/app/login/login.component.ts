@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
   }
 
   affiche(){
-    if(this.name=="" && this.psw==""){
-      this.errorMessage= "You shall not pass etettestestset";
+    if(this.name=="" || this.psw==""){
+      this.errorMessage= "Veuillez remplir les champs ci-dessus";
     }
     this.service.sendAuthentication(this.name,this.psw).subscribe(
       resultat =>{

@@ -5,7 +5,7 @@ require_once 'mysqlConnect.php';
 function topics_from_id($id){
     global $suject, $PDO;
 
-    $query = "SELECT * FROM $suject ".
+    $query = "SELECT no_posts FROM $suject ".
                 "WHERE course_id=?";
     $data = [$id];
     $statement = $PDO->prepare( $query );
