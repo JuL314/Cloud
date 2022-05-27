@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
   psw = "";
   errorMessage="";
 
-  constructor(private service:AuthServiceService,
+  user=0;
+
+  constructor(private messageService:MessageService, private service:AuthServiceService,
      private router:Router) {  }
 
   ngOnInit(): void {
@@ -30,7 +32,12 @@ export class LoginComponent implements OnInit {
         if(resultat.data.reason){
           this.errorMessage=resultat.data.reason;
         }
-        else this.router.navigateByUrl('/cours');
+        else {
+          console.log("changement");
+          this.user=resultat.data;
+          this.messageService.sendMessage("saveUser",{user:resultat.data}).subscribe();
+          this.router.navigateByUrl('/cours');
+        }
         this.service.finalizeAuthentication(resultat);
       }
     );

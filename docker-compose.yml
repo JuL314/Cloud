@@ -15,6 +15,16 @@ services:
       - ./backend/src:/var/www/html/
     ports:
       - "8082:80"
+
+  backendtopic:
+    build: .
+    container_name: backendtopic
+    links:
+      - mysqltopic
+    volumes:
+      - ./backendtopic/src:/var/www/html/
+    ports:
+      - "8083:80"
  
   mysql:
     command: --default-authentication-plugin=mysql_native_password
@@ -30,3 +40,18 @@ services:
          MYSQL_PASSWORD: admin
     ports:
       - "3307:3306"
+  
+  mysqltopic:
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysqltopic
+    image: mysql
+    restart: always
+    volumes:
+         - ./mysql-dump-topic:/docker-entrypoint-initdb.d
+    environment:
+         MYSQL_ROOT_PASSWORD: admin
+         MYSQL_DATABASE: Forum_Topic
+         MYSQL_USER: admin
+         MYSQL_PASSWORD: admin
+    ports:
+      - "3308:3306"

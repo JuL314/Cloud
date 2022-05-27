@@ -15,6 +15,7 @@ export class MessageService {
 
   constructor(private http : HttpClient) { }
 
+  
   //Php
   sendMessage(url : string, data : any) : Observable<PhpData> {
     let form = new FormData();
@@ -24,6 +25,18 @@ export class MessageService {
  
     return this.http.post<PhpData>(
       environment.urlSite+ url+ '.php', form, {withCredentials:true}
+    );
+
+  }
+
+  sendMessageBackendUser(url : string, data : any) : Observable<PhpData> {
+    let form = new FormData();
+    for(const property in data){
+      form.append(property,data[property])
+    }
+  
+    return this.http.post<PhpData>(
+      environment.urlSiteTopic+ url+ '.php', form, {withCredentials:true}
     );
   }
 

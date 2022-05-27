@@ -15,7 +15,7 @@ export class AuthServiceService {
 
   sendAuthentication(name: any, psw: any) : Observable<any>{
     let resul:any;
-    return this.messageService.sendMessage("checkLogin",{login:name,password:psw}).pipe(tap(resultat=>
+    return this.messageService.sendMessageBackendUser("checkLogin",{login:name,password:psw}).pipe(tap(resultat=>
     { }));
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MessageService } from '../message/message.service';
 import {MatPaginator} from '@angular/material/paginator';
@@ -17,6 +17,8 @@ export class CoursComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
+  @Input() id = 0;
+
   constructor(private messageService:MessageService, private _liveAnnouncer: LiveAnnouncer) { }
 
   ngOnInit(): void {
