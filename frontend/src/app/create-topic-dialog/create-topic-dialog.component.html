@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p>Comment voulez-vous appeler votre nouveau sujet ?</p>
+  <mat-form-field appearance="fill">
+    <input matInput [(ngModel)]="animal">
+  </mat-form-field>
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage.length > 0" >
+  {{ errorMessage }}
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Fermer</button>
+  <button mat-button (click)="newTopic()">Créer le sujet</button>
+</div>

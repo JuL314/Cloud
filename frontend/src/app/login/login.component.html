@@ -1,0 +1,12 @@
+
+<label><b>Nom d'utilisateur</b></label>
+            <input type="text" [(ngModel)] = "name" placeholder="Entrer le nom d'utilisateur" name="username" required>
+
+            <label><b>Mot de passe</b></label>
+            <input type="password" [(ngModel)] = "psw" placeholder="Entrer le mot de passe" name="password" required>
+<div class="button" (click)=affiche()>
+    <button type="submit">LOGIN</button>
+</div>
+<footer class="alert alert-danger" role="alert" *ngIf="errorMessage.length > 0" >
+    {{ errorMessage }}
+</footer>
