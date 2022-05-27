@@ -5,7 +5,7 @@ require_once 'mysqlConnect.php';
 function topics_from_id($id){
     global $suject, $PDO;
 
-    $query = "SELECT no_posts FROM $suject ".
+    $query = "SELECT text FROM $suject ".
                 "WHERE course_id=?";
     $data = [$id];
     $statement = $PDO->prepare( $query );
@@ -37,15 +37,25 @@ function create_new_topic($nom,$id){
     else {
         add_topic($nom,$id);
         // il faut incrémenter le nb de topic du cours de l'id(du cours)
+        increment($id);
         return get_topic_id($nom);
     }
+}
+
+function increment($id){
+    global $courses, $PDO;
+    $query = "UPDATE $courses SET no_subjects=no_subjects+1 WHERE course_id=?";
+    $data = [$id];
+    
+    $statement = $PDO->prepare( $query );
+    $exec = $statement->execute($data);
 }
 
 function get_topic_id($nom){
     global $suject, $PDO;
 
     $query = "SELECT suject_id FROM $suject ".
-                "WHERE subject_name=?";
+                "WHERE text=?";
     $data = [$nom];
     $statement = $PDO->prepare( $query );
     $exec = $statement->execute($data);
@@ -56,8 +66,8 @@ function get_topic_id($nom){
 function add_topic($nom,$id){
     global $suject, $PDO;
 
-    $query = "INSERT INTO $suject (course_id,subject_name,no_posts,last_message) VALUES ".
-                "(?,?,'0',NULL)";
+    $query = "INSERT INTO $suject (course_id,text) VALUES ".
+                "(?,?)";
     $data = [$id,$nom];
     
     $statement = $PDO->prepare( $query );
@@ -69,7 +79,7 @@ function does_name_exist($nom,$id){
     global $suject, $PDO;
 
     $query = "SELECT * FROM $suject ".
-                "WHERE subject_name=? AND course_id=?";
+                "WHERE text=? AND course_id=?";
     $data = [$nom,$id];
     $statement = $PDO->prepare( $query );
     $exec = $statement->execute($data);

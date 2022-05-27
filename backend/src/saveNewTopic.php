@@ -1,11 +1,5 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
-/*
-require_once 'auth.php';
-$_SESSION['user_id'] = '1';
-$_SESSION['cours_id'] = [1,2];
-$_POST['id_cours'] = '1';
-$_POST['nom'] = 'test back end 58';*/
 
 require_once 'helper.php';
 require_once 'topics.php';

@@ -1,7 +1,5 @@
 <?php
 
-// http://127.0.0.1:8080
-
 require_once 'config.php';
 require_once 'users.php';
 

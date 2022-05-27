@@ -1,6 +1,5 @@
-<h1 mat-dialog-title>Hi</h1>
 <div mat-dialog-content>
-  <p>Comment voulez-vous appeler votre nouveau sujet ?</p>
+  <p>Que voulez-vous rajouter ?</p>
   <mat-form-field appearance="fill">
     <input matInput [(ngModel)]="animal">
   </mat-form-field>
@@ -10,5 +9,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Fermer</button>
-  <button mat-button (click)="newTopic()">Créer le sujet</button>
+  <button mat-button (click)="newTopic()">Créer le post</button>
 </div>

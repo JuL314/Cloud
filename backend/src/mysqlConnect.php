@@ -4,8 +4,6 @@ require_once 'config.php';
 
 putenv('TTRSS_SINGLE_USER_MODE=true');
 
-// use PDO;
-
 $dsn = "mysql:host=$mysqlHost;".
     "dbname=$mysqlDatabase;".
     "charset=$charset";

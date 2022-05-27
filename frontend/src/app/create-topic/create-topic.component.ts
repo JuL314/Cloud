@@ -31,10 +31,10 @@ export class CreateTopicComponent{
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      console.log(result);
       let data = result;
       if(data) {
-        //let to_send = {subject_name : data.nom_topic,subject_id : data.subject_id,last_message:null,no_posts:0,course_id:this.iddd};
-        let to_send = {no_posts:"giga test"}
+        let to_send = {text:data.nom_topic}
         this.newTopic.emit(to_send);
       }
     });
